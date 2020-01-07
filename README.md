@@ -19,10 +19,10 @@ Es ist eine schnell laufende Uhr (`FastClock`) zu realisieren, die von beliebig 
 ## Anforderungen
 
 * Realisierung als Zweischichtanwendung mit GUI und Logik.
-* Für den Timer im Logikprojekt die Klasse `DispatcherTimer` verwenden.
-* Das Timerintervall ist so einzustellen, dass es auslöst, wenn für die `FastClock` eine Minute vergangen ist (dann kann in der `FastClock` einfach eine Minute dazugezählt werden)
-    * Das kürzeste Intervall ist 1 (1ms == 1Minute), das längste Intervall lässt die Uhr in Normalgeschwindigkeit laufen (Faktor = 1)
-* Die `FastClock` ist als `Singleton` zu implementieren, damit alle Beobachter die selbe Uhrzeit haben
+* Für den Timer im Logikprojekt die Klasse `DispatcherTimer` verwenden. Siehe dazu die die [Microsoft Dokumentation](https://docs.microsoft.com/en-us/dotnet/api/system.windows.threading.dispatchertimer?view=netcore-3.0).
+* Das Timerintervall des `DispatcherTimer`-Objekts ist so einzustellen, dass es auslöst, wenn für die `FastClock` eine Minute vergangen ist (dann kann in der `FastClock` einfach eine Minute dazugezählt werden)
+    * Das kürzeste mögliche Intervall ist 1 (1 ms == 1 Minute), das längste Intervall lässt die Uhr in Normalgeschwindigkeit laufen (`Beschleunigungsfaktor` von 1). Ein `Beschleunigungsfaktor` von 2 würde die Noralzeit doppelt so schnell laufen lassen. Dh. eine Minute würde in der `FastClock` nur eine halbe Minute (30 Sekunden) "dauern".
+* Die `FastClock` ist als `Singleton` ([Dokumentation](https://wiki.byte-welt.net/wiki/Singleton_Beispiele_(Design_Pattern))) zu implementieren, damit alle Beobachter die selbe Uhrzeit haben.
 
 ## Eventhandler
 
